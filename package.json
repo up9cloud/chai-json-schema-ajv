@@ -1,0 +1,37 @@
+{
+  "name": "chai-json-schema-ajv",
+  "version": "0.1.0",
+  "description": "A chai plugin for validate json schema.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "ajv": "^4.10.4",
+    "chai": "^3.5.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/up9cloud/chai-json-schema-ajv.git"
+  },
+  "keywords": [
+    "chai",
+    "json-schema",
+    "chai-plugin",
+    "assert",
+    "test",
+    "schema"
+  ],
+  "author": "up9cloud <up9cloud.net@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/up9cloud/chai-json-schema-ajv/issues"
+  },
+  "homepage": "https://github.com/up9cloud/chai-json-schema-ajv#readme"
+}

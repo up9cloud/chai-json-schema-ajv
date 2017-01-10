@@ -1,5 +1,7 @@
 # chai-json-schema-ajv
 
+[![Build Status](https://travis-ci.org/up9cloud/chai-json-schema-ajv.svg?branch=master)](https://travis-ci.org/up9cloud/chai-json-schema-ajv)
+
 A chai plugin for validate json schema.
 
 This is based on [ajv](https://github.com/epoberezkin/ajv), a JSON schema Validator fully support [JSON Schema draft 4](http://json-schema.org/)

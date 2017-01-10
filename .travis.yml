@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - 4
+  - 6
+  - lts/*
+deploy:
+  provider: npm
+  email: "$NPM_EMAIL"
+  api_key: "$NPM_AUTH_TOKEN"
+    all_branches: true

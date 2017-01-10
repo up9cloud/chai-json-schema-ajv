@@ -7,4 +7,5 @@ deploy:
   provider: npm
   email: "$NPM_EMAIL"
   api_key: "$NPM_AUTH_TOKEN"
+  on:
     all_branches: true

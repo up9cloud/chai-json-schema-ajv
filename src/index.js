@@ -9,7 +9,7 @@ module.exports = (chai, util) => {
     let ajv = new Ajv(options);
 
     // export ajv to chai
-    chai.ajv = Ajv;
+    chai.ajv = ajv;
 
     // add the method to chai
     chai.Assertion.addMethod('jsonSchema', function (schema, msg) {

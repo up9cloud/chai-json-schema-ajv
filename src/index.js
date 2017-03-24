@@ -27,6 +27,21 @@ function _createPlugin(chai, util, options) {
             );
         }
     });
+
+    /**
+     * Test if {schema} is valid
+     */
+    chai.Assertion.addProperty('validJsonSchema', function () {
+        const schema = this._obj;
+        const valid = ajv.validateSchema(schema);
+
+        if(!valid) {
+            this.assert(
+                valid,
+                "value is not a valid JSON Schema:\n" + util.inspect(ajv.errors, null, null)
+            );
+        }
+    });
 }
 
 module.exports = _createPlugin;

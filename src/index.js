@@ -2,33 +2,37 @@
 
 const Ajv = require('ajv');
 
-module.exports = (chai, util) => {
+function _createPlugin(chai, util, options) {
     const assert = chai.assert;
 
-    let options = null;
     let ajv = new Ajv(options);
 
     // export ajv to chai
     chai.ajv = ajv;
 
-    // add the method to chai
-    chai.Assertion.addMethod('jsonSchema', function (schema, msg) {
-        let data = this._obj;
+    /**
+     * Test if {value} matches the {schema}
+     */
+    chai.Assertion.addMethod('jsonSchema', function (schema) {
+        const value = this._obj;
 
         assert.ok(schema, 'schema');
 
-        let validate = ajv.compile(schema);
-        let valid = validate(data);
-        let detail = '';
-        if (!valid) {
-            let errors = validate.errors;
-            detail =  `${JSON.stringify(errors, true, 2)}`;
-        }
+        const valid = ajv.validate(schema, value);
 
-        // pass formatted string to mocha.
-        this.assert(
-            valid,
-            `expected value not match the json-schema\n${detail}`
-        );
+        if (!valid) {
+            this.assert(
+                valid,
+                "expected value not match the json-schema\n" + JSON.stringify(ajv.errors, null, '  ')
+            );
+        }
     });
+}
+
+module.exports = _createPlugin;
+
+module.exports.withOptions = function(options) {
+    return function(chai, utils) {
+        return _createPlugin(chai, utils, options);
+    }
 };

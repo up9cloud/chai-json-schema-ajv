@@ -8,11 +8,11 @@ This is based on [ajv](https://github.com/epoberezkin/ajv), a JSON schema Valida
 
 ## Usage
 
-### nodejs
-
 ```sh
 npm install chai-json-schema-ajv
 ```
+
+### basic
 
 ```js
 const chai = require('chai');
@@ -51,10 +51,17 @@ let schema = {
 expect(apple).to.be.jsonSchema(schema);
 ```
 
+### ajv with custom options
+
+```js
+const ajvOptions = { /** https://github.com/epoberezkin/ajv#options **/ };
+chai.use(require('chai-json-schema-ajv').withOptions(ajvOptions));
+```
+
 ## TODO
 
-- support browser
-- send option to ajv
+- support browser side
+- ~~send option to ajv~~ (thanks @dimac)
 
 ## License
 

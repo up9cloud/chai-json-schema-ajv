@@ -58,17 +58,7 @@ describe('basic test', function () {
         } catch (err) {
             expect(err instanceof chai.AssertionError).to.be.true;
             expect(err.message).to.be.equal(`expected value not match the json-schema
-[
-  {
-    "keyword": "type",
-    "dataPath": ".value",
-    "schemaPath": "#/properties/value/type",
-    "params": {
-      "type": "integer"
-    },
-    "message": "should be integer"
-  }
-]`);
+data.value should be integer`);
         }
     });
 });

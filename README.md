@@ -58,6 +58,33 @@ const ajvOptions = { /** https://github.com/epoberezkin/ajv#options **/ };
 chai.use(require('chai-json-schema-ajv').withOptions(ajvOptions));
 ```
 
+### more error message
+
+Original error message looks like `expected value not match the json-schema\ndata.value should be integer`. We can set it to verbose mode.
+
+```js
+chai.use(require('chai-json-schema-ajv').withOptions({
+  verbose: true
+}));
+//expected value not match the json-schema
+//[
+//  {
+//    "keyword": "type",
+//    "dataPath": ".value",
+//    "schemaPath": "#/properties/value/type",
+//    "params": {
+//      "type": "integer"
+//    },
+//    "message": "should be integer",
+//    "schema": "integer",
+//    "parentSchema": {
+//      "type": "integer"
+//    },
+//    "data": 1.1
+//  }
+//]
+```
+
 ## TODO
 
 - support browser side

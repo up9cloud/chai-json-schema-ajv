@@ -20,9 +20,16 @@ function _createPlugin(chai, util, options) {
 
         const valid = ajv.validate(schema, value);
 
+        let detail = '';
+        if (options && options.verbose) {
+            detail = JSON.stringify(ajv.errors, null, '  ');
+        } else {
+            detail = ajv.errorsText(valid.error);
+        }
+
         this.assert(
             valid,
-            "expected value not match the json-schema\n" + ajv.errorsText(valid.error)
+            `expected value not match the json-schema\n${detail}`
         );
     });
 

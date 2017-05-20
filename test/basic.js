@@ -1,7 +1,7 @@
 'use strict';
 
 const chai = require('chai');
-chai.use(require('../src/index.js'));
+chai.use(require('../index.js'));
 const expect = chai.expect;
 
 describe('basic test', function () {

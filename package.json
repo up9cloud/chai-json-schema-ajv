@@ -1,6 +1,6 @@
 {
   "name": "chai-json-schema-ajv",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A chai plugin for validate json schema.",
   "main": "index.js",
   "directories": {
@@ -14,7 +14,7 @@
     "mocha": "^3.2.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha && for file in test-standalone/; do mocha $file; done;"
   },
   "repository": {
     "type": "git",

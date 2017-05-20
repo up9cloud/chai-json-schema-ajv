@@ -51,16 +51,18 @@ let schema = {
 expect(apple).to.be.jsonSchema(schema);
 ```
 
-### ajv with custom options
+## Custom options
 
 ```js
-const ajvOptions = { /** https://github.com/epoberezkin/ajv#options **/ };
-chai.use(require('chai-json-schema-ajv').withOptions(ajvOptions));
+const options = { ... };
+chai.use(require('chai-json-schema-ajv').withOptions(options));
 ```
 
-### more error message
+- options will be send to ajv (see https://github.com/epoberezkin/ajv#options)
 
-Original error message looks like `expected value not match the json-schema\ndata.value should be integer`. We can set it to verbose mode.
+### verbose
+
+Default error message is parsed by `ajv.errorsText`. We can set it to verbose mode.
 
 ```js
 chai.use(require('chai-json-schema-ajv').withOptions({

@@ -1,13 +1,20 @@
 'use strict';
 
-const chai = require('chai');
+const clearModule = require('clear-module')
 const chaiJsonSchemaAjv = require('../index.js').withOptions({
     verbose: true
 });
-chai.use(chaiJsonSchemaAjv);
-const expect = chai.expect;
 
 describe('verbose mode test', function () {
+    let chai;
+    let expect;
+    before(function () {
+        clearModule('chai');
+
+        chai = require('chai');
+        chai.use(chaiJsonSchemaAjv);
+        expect = chai.expect;
+    });
     it('should print error message when not match schema.', function () {
         let apple = {
             value: 1.1,

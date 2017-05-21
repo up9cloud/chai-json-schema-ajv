@@ -1,6 +1,7 @@
 # chai-json-schema-ajv
 
 [![Build Status](https://travis-ci.org/up9cloud/chai-json-schema-ajv.svg?branch=master)](https://travis-ci.org/up9cloud/chai-json-schema-ajv)
+[![Coverage Status](https://coveralls.io/repos/github/up9cloud/chai-json-schema-ajv/badge.svg?branch=master)](https://coveralls.io/github/up9cloud/chai-json-schema-ajv?branch=master)
 
 A chai plugin for validate json schema.
 

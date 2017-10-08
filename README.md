@@ -13,18 +13,18 @@ This is based on [ajv](https://github.com/epoberezkin/ajv), a JSON schema Valida
 npm install chai-json-schema-ajv
 ```
 
-### basic
+### Basic (jsonSchema)
 
 ```js
-const chai = require('chai');
-chai.use(require('chai-json-schema-ajv'));
-const expect = chai.expect;
+const chai = require('chai')
+chai.use(require('chai-json-schema-ajv'))
+const expect = chai.expect
 
 let apple = {
   name: 'foo',
   color: ['red', 'green', 'yellow'],
   value: 10
-};
+}
 let schema = {
   title: 'fruit schema v0.1',
   type: 'object',
@@ -49,26 +49,62 @@ let schema = {
   }
 }
 
-expect(apple).to.be.jsonSchema(schema);
+expect(apple).to.be.jsonSchema(schema)
 ```
 
-## Custom options
+### Basic (validJsonSchema)
 
 ```js
-const options = { ... };
-chai.use(require('chai-json-schema-ajv').withOptions(options));
+const chai = require('chai')
+chai.use(require('chai-json-schema-ajv'))
+const expect = chai.expect
+
+let schema = {
+  title: 'valid schema',
+  type: 'object',
+  required: ['name'],
+  properties: {
+    name: {
+      type: 'string',
+      minLength: 3
+    }
+  }
+}
+
+expect(schema).to.be.validJsonSchema
 ```
 
-- options will be send to ajv (see https://github.com/epoberezkin/ajv#options)
-
-### verbose
-
-Default error message is parsed by `ajv.errorsText`. We can set it to verbose mode.
+### With custom ajv options
 
 ```js
-chai.use(require('chai-json-schema-ajv').withOptions({
-  verbose: true
-}));
+const options = { ... }
+chai.use(require('chai-json-schema-ajv').withOptions(options))
+
+...
+```
+
+- options will be send to [ajv](https://github.com/epoberezkin/ajv#options)
+
+## Verbose
+
+Default error message is parsed by `ajv.errorsText`.
+
+If we set `withOptions({verbose: true})`, it will print full errors.
+
+```js
+...
+chai.use(require('chai-json-schema-ajv')
+...
+ 
+//expected value not match the json-schema
+//data.value should be integer
+```
+
+```js
+...
+chai.use(require('chai-json-schema-ajv').withOptions({ verbose: true }))
+...
+
 //expected value not match the json-schema
 //[
 //  {
@@ -91,6 +127,8 @@ chai.use(require('chai-json-schema-ajv').withOptions({
 ## TODO
 
 - support browser side
+- move to es2017 async/await (v2)
+- ~~add lint~~
 - ~~send option to ajv~~ (thanks @dimac)
 
 ## License

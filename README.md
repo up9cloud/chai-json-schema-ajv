@@ -5,7 +5,12 @@
 
 A chai plugin for validate json schema.
 
-This is based on [ajv](https://github.com/epoberezkin/ajv), a JSON schema Validator fully support [JSON Schema draft 4](http://json-schema.org/)
+This is based on [ajv](https://github.com/epoberezkin/ajv), a JSON schema Validator fully support.
+
+|version|ajv version|json schema version|
+|---|---|---|
+|1.x|4.11.8|[JSON Schema draft 4](http://json-schema.org/)|
+|2.x|5.5.1|[JSON Schema draft-06](https://trac.tools.ietf.org/html/draft-wright-json-schema-validation-01)|
 
 ## Usage
 
@@ -87,47 +92,51 @@ chai.use(require('chai-json-schema-ajv').withOptions(options))
 
 ## Verbose
 
-Default error message is parsed by `ajv.errorsText`.
-
-If we set `withOptions({verbose: true})`, it will print full errors.
+> Default error message is parsed by `ajv.errorsText`.
 
 ```js
 ...
 chai.use(require('chai-json-schema-ajv')
 ...
- 
-//expected value not match the json-schema
-//data.value should be integer
 ```
+
+```console
+expected value not match the json-schema
+data.value should be integer
+```
+
+> It will print full errors with the option `{verbose: true}`
 
 ```js
 ...
 chai.use(require('chai-json-schema-ajv').withOptions({ verbose: true }))
 ...
+```
 
-//expected value not match the json-schema
-//[
-//  {
-//    "keyword": "type",
-//    "dataPath": ".value",
-//    "schemaPath": "#/properties/value/type",
-//    "params": {
-//      "type": "integer"
-//    },
-//    "message": "should be integer",
-//    "schema": "integer",
-//    "parentSchema": {
-//      "type": "integer"
-//    },
-//    "data": 1.1
-//  }
-//]
+```console
+expected value not match the json-schema
+[
+ {
+   "keyword": "type",
+   "dataPath": ".value",
+   "schemaPath": "#/properties/value/type",
+   "params": {
+     "type": "integer"
+   },
+   "message": "should be integer",
+   "schema": "integer",
+   "parentSchema": {
+     "type": "integer"
+   },
+   "data": 1.1
+ }
+]
 ```
 
 ## TODO
 
 - support browser side
-- move to es2017 async/await (v2)
+- move to es2017 async/await
 - ~~add lint~~
 - ~~send option to ajv~~ (thanks @dimac)
 

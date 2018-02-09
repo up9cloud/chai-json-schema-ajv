@@ -10,7 +10,8 @@ This is based on [ajv](https://github.com/epoberezkin/ajv), a JSON schema Valida
 |version|ajv version|json schema version|
 |---|---|---|
 |[v1](https://github.com/up9cloud/chai-json-schema-ajv/tree/v1)|4.11.8|[JSON Schema draft 4](http://json-schema.org/)|
-|v2|5.5.2|[JSON Schema draft-06](https://trac.tools.ietf.org/html/draft-wright-json-schema-validation-01)|
+|[v2](https://github.com/up9cloud/chai-json-schema-ajv/tree/v2)|5.5.2|[JSON Schema draft-06](https://trac.tools.ietf.org/html/draft-wright-json-schema-validation-01)|
+|v3|6.1.1|[JSON Schema draft-07](http://json-schema.org/latest/json-schema-validation.html)|
 
 ## Usage
 

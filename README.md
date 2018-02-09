@@ -15,7 +15,7 @@ This is based on [ajv](https://github.com/epoberezkin/ajv), a JSON schema Valida
 ## Usage
 
 ```sh
-npm install chai-json-schema-ajv
+npm install chai-json-schema-ajv@2 --save-dev
 ```
 
 ### Basic (jsonSchema)

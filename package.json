@@ -1,13 +1,13 @@
 {
   "name": "chai-json-schema-ajv",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A chai plugin for validate json schema.",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
   "dependencies": {
-    "ajv": "^5.5.1"
+    "ajv": "^5.5.2"
   },
   "devDependencies": {
     "clear-module": "^2.1.0",
@@ -34,8 +34,8 @@
   },
   "keywords": [
     "chai",
-    "json-schema",
     "chai-plugin",
+    "json-schema",
     "assert",
     "test",
     "schema",

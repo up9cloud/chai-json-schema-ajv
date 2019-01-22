@@ -22,7 +22,7 @@
     "nyc": "^11.4.1"
   },
   "peerDependencies": {
-    "ajv": ">4.11.8"
+    "ajv": ">=4.11.8"
   },
   "scripts": {
     "lint": "eslint src test",

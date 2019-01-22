@@ -11,12 +11,14 @@ This is based on [ajv](https://github.com/epoberezkin/ajv), a JSON schema Valida
 |---|---|---|
 |[v1](https://github.com/up9cloud/chai-json-schema-ajv/tree/v1)|4.11.8|[JSON Schema draft 4](http://json-schema.org/)|
 |[v2](https://github.com/up9cloud/chai-json-schema-ajv/tree/v2)|5.5.2|[JSON Schema draft-06](https://trac.tools.ietf.org/html/draft-wright-json-schema-validation-01)|
-|v3|6.7.0|[JSON Schema draft-07](http://json-schema.org/latest/json-schema-validation.html)|
+|[v3](https://github.com/up9cloud/chai-json-schema-ajv/tree/v3)|6.7.0|[JSON Schema draft-07](http://json-schema.org/latest/json-schema-validation.html)|
+|v4|Up to you||
 
 ## Usage
 
 ```sh
-npm install chai-json-schema-ajv
+npm i ajv --save-dev # or any version you prefer `npm i ajv@4 --save-dev`
+npm i chai-json-schema-ajv --save-dev
 ```
 
 ### Basic (jsonSchema)
@@ -110,7 +112,7 @@ expected value not match the json-schema
 data.value should be integer
 ```
 
-If you go with option `{verbose: true}`, itt will print full errors.
+If you go with option `{verbose: true}`, it will print full errors.
 
 ```js
 ...

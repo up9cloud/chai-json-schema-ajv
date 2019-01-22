@@ -6,9 +6,7 @@
   "directories": {
     "test": "test"
   },
-  "dependencies": {
-    "ajv": "^6.7.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "chai": "^4.1.2",
     "clear-module": "^2.1.0",
@@ -23,9 +21,15 @@
     "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^11.4.1"
   },
+  "peerDependencies": {
+    "ajv": ">4.11.8"
+  },
   "scripts": {
     "lint": "eslint src test",
-    "test": "npm run lint && nyc mocha",
+    "test": "npm run lint && npm run test-v4 && npm run test-v5 && npm run test-latest",
+    "test-v4": "npm i ajv@4 --no-save && nyc mocha",
+    "test-v5": "npm i ajv@5 --no-save && nyc mocha",
+    "test-latest": "npm remove ajv && npm i ajv --no-save && nyc mocha",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {

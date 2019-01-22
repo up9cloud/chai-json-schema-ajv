@@ -11,7 +11,7 @@ This is based on [ajv](https://github.com/epoberezkin/ajv), a JSON schema Valida
 |---|---|---|
 |[v1](https://github.com/up9cloud/chai-json-schema-ajv/tree/v1)|4.11.8|[JSON Schema draft 4](http://json-schema.org/)|
 |[v2](https://github.com/up9cloud/chai-json-schema-ajv/tree/v2)|5.5.2|[JSON Schema draft-06](https://trac.tools.ietf.org/html/draft-wright-json-schema-validation-01)|
-|v3|6.1.1|[JSON Schema draft-07](http://json-schema.org/latest/json-schema-validation.html)|
+|v3|6.7.0|[JSON Schema draft-07](http://json-schema.org/latest/json-schema-validation.html)|
 
 ## Usage
 
@@ -83,9 +83,11 @@ expect(schema).to.be.validJsonSchema
 ### With custom ajv options
 
 ```js
+...
 const options = { ... }
-chai.use(require('chai-json-schema-ajv').withOptions(options))
-
+chai.use(
+  require('chai-json-schema-ajv').withOptions(options)
+)
 ...
 ```
 
@@ -93,11 +95,13 @@ chai.use(require('chai-json-schema-ajv').withOptions(options))
 
 ## Verbose
 
-> Default error message is parsed by `ajv.errorsText`.
+Default error message is parsed by `ajv.errorsText`.
 
 ```js
 ...
-chai.use(require('chai-json-schema-ajv')
+chai.use(
+  require('chai-json-schema-ajv')
+)
 ...
 ```
 
@@ -106,11 +110,15 @@ expected value not match the json-schema
 data.value should be integer
 ```
 
-> It will print full errors with the option `{verbose: true}`
+If you go with option `{verbose: true}`, itt will print full errors.
 
 ```js
 ...
-chai.use(require('chai-json-schema-ajv').withOptions({ verbose: true }))
+chai.use(
+  require('chai-json-schema-ajv').withOptions({
+    verbose: true
+  })
+)
 ...
 ```
 
@@ -138,7 +146,7 @@ expected value not match the json-schema
 
 - support browser side
 - move to es2017 async/await
-- ~~add lint~~
+- ~~add linter~~
 - ~~send option to ajv~~ (thanks @dimac)
 
 ## License

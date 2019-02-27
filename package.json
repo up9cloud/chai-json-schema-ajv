@@ -8,18 +8,18 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "chai": "^4.1.2",
+    "chai": "^4.2.0",
     "clear-module": "^2.1.0",
-    "coveralls": "^3.0.0",
-    "eslint": "^4.17.0",
+    "coveralls": "^3.0.3",
+    "eslint": "^4.19.1",
     "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
     "mocha": "^4.1.0",
     "mocha-lcov-reporter": "^1.3.0",
-    "nyc": "^11.4.1"
+    "nyc": "^11.9.0"
   },
   "peerDependencies": {
     "ajv": ">=4.11.8"
@@ -45,7 +45,7 @@
     "schema",
     "ajv"
   ],
-  "author": "up9cloud <up9cloud.net@gmail.com>",
+  "author": "up9cloud (https://github.com/up9cloud)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/up9cloud/chai-json-schema-ajv/issues"

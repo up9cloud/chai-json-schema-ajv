@@ -1,56 +1,41 @@
 'use strict'
 
-const Ajv = require('ajv')
+const Ajv = require('ajv');
 
 function _createPlugin (chai, util, options) {
-  const assert = chai.assert
-
-  let ajv = new Ajv(options)
+  const ajv = new Ajv(options);
 
   // export ajv to chai
-  chai.ajv = ajv
+  chai.ajv = ajv;
 
   /**
    * Test if {value} matches the {schema}
    */
   chai.Assertion.addMethod('jsonSchema', function (schema) {
-    const value = this._obj
+    const value = this._obj;
 
-    assert.ok(schema, 'missing schema')
+		chai.assert.ok(ajv.validateSchema(schema), 'Given value is not a valid JSON Schema.');
 
-    const valid = ajv.validate(schema, value)
+    const valid = ajv.validate(schema, value);
+    const detail = (options && options.verbose) ? JSON.stringify(ajv.errors, null, '  ') : ajv.errorsText(valid.error);
 
-    let detail = ''
-    if (options && options.verbose) {
-      detail = JSON.stringify(ajv.errors, null, '  ')
-    } else {
-      detail = ajv.errorsText(valid.error)
-    }
-
-    this.assert(
-      valid,
-      `expected value not match the json-schema\n${detail}`
-    )
+		this.assert(valid, `Given value does not match the given JSON Schema: \n${detail}`);
   })
 
   /**
    * Test if {schema} is valid
    */
   chai.Assertion.addProperty('validJsonSchema', function () {
-    const schema = this._obj
-    const valid = ajv.validateSchema(schema)
-
-    this.assert(
-      valid,
-      'value is not a valid JSON Schema:\n' + util.inspect(ajv.errors, null, null)
-    )
+		const schema = this._obj;
+		const valid = ajv.validateSchema(schema);
+		this.assert(valid, 'Given value is not a valid JSON Schema: \n' + util.inspect(ajv.errors, null, null));
   })
 }
 
-module.exports = _createPlugin
+module.exports = _createPlugin;
 
 module.exports.withOptions = function (options) {
   return function (chai, utils) {
-    return _createPlugin(chai, utils, options)
+    return _createPlugin(chai, utils, options);
   }
 }

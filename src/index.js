@@ -3,8 +3,6 @@
 const Ajv = require('ajv')
 
 function _createPlugin (chai, util, options) {
-  const assert = chai.assert
-
   let ajv = new Ajv(options)
 
   // export ajv to chai
@@ -15,8 +13,6 @@ function _createPlugin (chai, util, options) {
    */
   chai.Assertion.addMethod('jsonSchema', function (schema) {
     const value = this._obj
-
-    assert.ok(schema, 'missing schema')
 
     const valid = ajv.validate(schema, value)
 

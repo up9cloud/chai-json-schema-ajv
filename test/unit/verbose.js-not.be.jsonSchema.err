@@ -1,0 +1,1 @@
+expected { Object (name, color, ...) } to not match json-schema

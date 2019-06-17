@@ -1,0 +1,2 @@
+expected data to be a valid json-schema
+data.type should be equal to one of the allowed values, data.type should be array, data.type should match some schema in anyOf

@@ -1,31 +1,41 @@
-'use strict'
-
 const Ajv = require('ajv')
 
-function _createPlugin (chai, util, options) {
-  let ajv = new Ajv(options)
-
-  // export ajv to chai
+function _createPlugin (chai, utils, options) {
+  let ajv
+  if (options && options.ajv instanceof Ajv) {
+    ajv = options.ajv
+  } else {
+    ajv = new Ajv(options)
+  }
+  // export ajv
   chai.ajv = ajv
+
+  let verbose = false
+  if (options && options.hasOwnProperty('verbose')) {
+    verbose = options.verbose
+  }
 
   /**
    * Test if {value} matches the {schema}
    */
   chai.Assertion.addMethod('jsonSchema', function (schema) {
-    const value = this._obj
-
+    const value = utils.flag(this, 'object')
     const valid = ajv.validate(schema, value)
 
-    let detail = ''
-    if (options && options.verbose) {
-      detail = JSON.stringify(ajv.errors, null, '  ')
+    let placeholder
+    let detail
+    if (verbose || ajv._opts.verbose) {
+      placeholder = '#{this}'
+      detail = utils.inspect(ajv.errors, false, null)
     } else {
+      placeholder = 'data' // same as ajv errors' placeholder
       detail = ajv.errorsText(valid.error)
     }
 
     this.assert(
       valid,
-      `expected value not match the json-schema\n${detail}`
+      `expected ${placeholder} to match json-schema\n${detail}`,
+      `expected ${placeholder} to not match json-schema`
     )
   })
 
@@ -33,20 +43,32 @@ function _createPlugin (chai, util, options) {
    * Test if {schema} is valid
    */
   chai.Assertion.addProperty('validJsonSchema', function () {
-    const schema = this._obj
+    const schema = utils.flag(this, 'object')
     const valid = ajv.validateSchema(schema)
+
+    let placeholder
+    let detail
+    if (verbose || ajv._opts.verbose) {
+      placeholder = '#{this}'
+      detail = utils.inspect(ajv.errors, false, null)
+    } else {
+      placeholder = 'data'
+      detail = ajv.errorsText(valid.error)
+    }
 
     this.assert(
       valid,
-      'value is not a valid JSON Schema:\n' + util.inspect(ajv.errors, null, null)
+      `expected ${placeholder} to be a valid json-schema\n${detail}`,
+      `expected ${placeholder} to not be a valid json-schema`
     )
   })
 }
-
-module.exports = _createPlugin
-
-module.exports.withOptions = function (options) {
+function create (options) {
   return function (chai, utils) {
     return _createPlugin(chai, utils, options)
   }
 }
+
+module.exports = _createPlugin
+module.exports.create = create
+module.exports.withOptions = create // compatible with v4

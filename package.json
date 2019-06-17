@@ -1,6 +1,6 @@
 {
   "name": "chai-json-schema-ajv",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "A chai plugin for validate json schema.",
   "main": "index.js",
   "directories": {

@@ -11,7 +11,7 @@
     "chai": "^4.2.0",
     "clear-module": "^2.1.0",
     "coveralls": "^3.0.3",
-    "eslint": "^4.19.1",
+    "eslint": "^6.8.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-node": "^5.2.1",

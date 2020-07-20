@@ -4,6 +4,7 @@ module.exports = {
     chai: true,
     chaiJsonSchemaAjv: true,
     expect: true,
+    assert: true,
     invalidSchema: true,
     fruitSchema: true,
     apple: true,

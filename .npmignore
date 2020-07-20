@@ -1,5 +1,6 @@
 /test/
 .eslintrc.js
 .gitignore
+.mocharc.js
 .npmignore
 .travis.yml

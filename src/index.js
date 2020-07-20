@@ -11,14 +11,17 @@ function _createPlugin (chai, utils, options) {
   chai.ajv = ajv
 
   let verbose = false
-  if (options && options.hasOwnProperty('verbose')) {
+  if (options && Object.prototype.hasOwnProperty.call(options, 'verbose')) {
     verbose = options.verbose
   }
 
   /**
    * Test if {value} matches the {schema}
    */
-  chai.Assertion.addMethod('jsonSchema', function (schema) {
+  chai.Assertion.addMethod('jsonSchema', function (schema, message) {
+    if (message) {
+      utils.flag(this, 'message', message)
+    }
     const value = utils.flag(this, 'object')
     const valid = ajv.validate(schema, value)
 
@@ -62,6 +65,19 @@ function _createPlugin (chai, utils, options) {
       `expected ${placeholder} to not be a valid json-schema`
     )
   })
+
+  chai.assert.jsonSchema = function (value, schema, message) {
+    new chai.Assertion(value).to.be.jsonSchema(schema, message)
+  }
+  chai.assert.notJsonSchema = function (value, schema, message) {
+    new chai.Assertion(value).to.not.be.jsonSchema(schema, message)
+  }
+  chai.assert.validJsonSchema = function (schema, message) {
+    new chai.Assertion(schema, message).to.be.validJsonSchema
+  }
+  chai.assert.notValidJsonSchema = function (schema, message) {
+    new chai.Assertion(schema, message).to.not.be.validJsonSchema
+  }
 }
 function create (options) {
   return function (chai, utils) {

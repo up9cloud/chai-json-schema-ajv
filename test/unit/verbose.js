@@ -1,9 +1,11 @@
+const clearModule = require('clear-module')
+
 describe(__filename, function () {
   describe('create({ verbose: true })', function () {
     let chai
     let expect
     before(function () {
-      require('clear-module')('chai')
+      clearModule('chai')
       chai = require('chai')
       chai.use(chaiJsonSchemaAjv.create({
         verbose: true
@@ -47,7 +49,7 @@ describe(__filename, function () {
     let chai
     let expect
     before(function () {
-      require('clear-module')('chai')
+      clearModule('chai')
       const Ajv = require('ajv')
       chai = require('chai')
       chai.use(chaiJsonSchemaAjv.create({
@@ -69,7 +71,7 @@ describe(__filename, function () {
     let chai
     let expect
     before(function () {
-      require('clear-module')('chai')
+      clearModule('chai')
       const Ajv = require('ajv')
       chai = require('chai')
       chai.use(chaiJsonSchemaAjv.create({

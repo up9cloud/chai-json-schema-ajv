@@ -6,38 +6,8 @@ chai.use(chaiJsonSchemaAjv)
 global.chai = chai
 global.chaiJsonSchemaAjv = chaiJsonSchemaAjv
 global.expect = chai.expect
-global.invalidSchema = {
-  type: '__invalid__'
-}
-global.fruitSchema = {
-  title: 'fruit schema v0.1',
-  type: 'object',
-  required: ['name', 'color', 'value'],
-  properties: {
-    name: {
-      type: 'string',
-      minLength: 3
-    },
-    color: {
-      type: 'array',
-      minItems: 1,
-      uniqueItems: true,
-      items: {
-        type: 'string'
-      }
-    },
-    value: {
-      type: 'integer',
-      minimum: 5
-    }
-  }
-}
-global.apple = {
-  name: 'foo',
-  color: ['red', 'green', 'yellow'],
-  value: 10
-}
-global.car = {
-  name: 'bar',
-  speed: 1.1
-}
+global.assert = chai.assert
+global.invalidSchema = require('./invalidSchema.js')
+global.fruitSchema = require('./fruitSchema.js')
+global.apple = require('./apple.js')
+global.car = require('./car.js')

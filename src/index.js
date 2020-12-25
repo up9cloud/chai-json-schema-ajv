@@ -1,4 +1,10 @@
-const Ajv = require('ajv')
+const ajvModule = require('ajv')
+let Ajv
+if (ajvModule.default) {
+  Ajv = ajvModule.default // > v7
+} else {
+  Ajv = ajvModule // <= v6
+}
 
 function _createPlugin (chai, utils, options) {
   let ajv

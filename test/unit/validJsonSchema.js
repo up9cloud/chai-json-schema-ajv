@@ -1,3 +1,4 @@
+const rootPath = require('ajv').default ? `${__dirname}/ajv-v7/${require('path').basename(__filename)}` : __filename
 describe(__filename, function () {
   describe('should pass: fruit schema is valid', function () {
     it('expect(fruitSchema).to.be.validJsonSchema', function () {
@@ -8,7 +9,7 @@ describe(__filename, function () {
     })
   })
   describe('should fail: invalid schema is valid', function () {
-    const message = fs.readFileSync(`${__filename}-be.err`, 'utf8')
+    const message = fs.readFileSync(`${rootPath}-be.err`, 'utf8')
     it('expect(invalidSchema).to.be.validJsonSchema', function () {
       try {
         expect(invalidSchema).to.be.validJsonSchema
@@ -44,7 +45,7 @@ describe(__filename, function () {
     })
   })
   describe('should fail: fruit schema is not valid', function () {
-    const message = fs.readFileSync(`${__filename}-notBe.err`, 'utf8')
+    const message = fs.readFileSync(`${rootPath}-notBe.err`, 'utf8')
     it('expect(fruitSchema).to.not.be.validJsonSchema', function () {
       try {
         expect(fruitSchema).to.not.be.validJsonSchema

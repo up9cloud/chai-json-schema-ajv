@@ -1,0 +1,63 @@
+expected { type: '__invalid__' } to be a valid json-schema
+[ { keyword: 'enum',
+    dataPath: '/type',
+    schemaPath: '#/definitions/simpleTypes/enum',
+    params: 
+     { allowedValues: 
+        [ 'array',
+          'boolean',
+          'integer',
+          'null',
+          'number',
+          'object',
+          'string' ] },
+    message: 'should be equal to one of the allowed values',
+    schema: 
+     [ 'array',
+       'boolean',
+       'integer',
+       'null',
+       'number',
+       'object',
+       'string' ],
+    parentSchema: 
+     { enum: 
+        [ 'array',
+          'boolean',
+          'integer',
+          'null',
+          'number',
+          'object',
+          'string' ] },
+    data: '__invalid__' },
+  { keyword: 'type',
+    dataPath: '/type',
+    schemaPath: '#/properties/type/anyOf/1/type',
+    params: { type: 'array' },
+    message: 'should be array',
+    schema: 'array',
+    parentSchema: 
+     { type: 'array',
+       items: { '$ref': '#/definitions/simpleTypes' },
+       minItems: 1,
+       uniqueItems: true },
+    data: '__invalid__' },
+  { keyword: 'anyOf',
+    dataPath: '/type',
+    schemaPath: '#/properties/type/anyOf',
+    params: {},
+    message: 'should match some schema in anyOf',
+    schema: 
+     [ { '$ref': '#/definitions/simpleTypes' },
+       { type: 'array',
+         items: { '$ref': '#/definitions/simpleTypes' },
+         minItems: 1,
+         uniqueItems: true } ],
+    parentSchema: 
+     { anyOf: 
+        [ { '$ref': '#/definitions/simpleTypes' },
+          { type: 'array',
+            items: { '$ref': '#/definitions/simpleTypes' },
+            minItems: 1,
+            uniqueItems: true } ] },
+    data: '__invalid__' } ]

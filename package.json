@@ -27,7 +27,8 @@
     "test-v5": "npm i ajv@5 --no-save && nyc mocha test/unit",
     "test-v6": "npm i ajv@6 --no-save && nyc mocha test/unit",
     "test-latest": "npm remove ajv && npm i ajv --no-save && nyc mocha test/unit",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "test-node12": "docker run --rm -v ${PWD}:/app -w /app node:12-alpine npm test"
   },
   "repository": {
     "type": "git",
@@ -47,5 +48,6 @@
   "bugs": {
     "url": "https://github.com/up9cloud/chai-json-schema-ajv/issues"
   },
-  "homepage": "https://github.com/up9cloud/chai-json-schema-ajv#readme"
+  "homepage": "https://github.com/up9cloud/chai-json-schema-ajv#readme",
+  "dependencies": {}
 }

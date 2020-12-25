@@ -1,10 +1,4 @@
-const ajvModule = require('ajv')
-let Ajv
-if (ajvModule.default) {
-  Ajv = ajvModule.default // > v7
-} else {
-  Ajv = ajvModule // <= v6
-}
+const Ajv = require('ajv').default ? require('ajv').default : require('ajv') // ? `v7` : `<= v6`
 
 function _createPlugin (chai, utils, options) {
   let ajv
@@ -33,7 +27,11 @@ function _createPlugin (chai, utils, options) {
 
     let placeholder
     let detail
-    if (verbose || ajv._opts.verbose) {
+    if (
+      verbose ||
+      (ajv.opts && ajv.opts.verbose) || // v7
+      (ajv._opts && ajv._opts.verbose) // <= v6
+    ) {
       placeholder = '#{this}'
       detail = utils.inspect(ajv.errors, false, null)
     } else {
@@ -57,7 +55,11 @@ function _createPlugin (chai, utils, options) {
 
     let placeholder
     let detail
-    if (verbose || ajv._opts.verbose) {
+    if ( 
+      verbose ||
+      (ajv.opts && ajv.opts.verbose) || // v7
+      (ajv._opts && ajv._opts.verbose) // <= v6
+    ) {
       placeholder = '#{this}'
       detail = utils.inspect(ajv.errors, false, null)
     } else {

@@ -1,4 +1,4 @@
-let Ajv = require('ajv').default ? require('ajv').default : require('ajv')
+const Ajv = require('ajv').default ? require('ajv').default : require('ajv')
 describe(__filename, function () {
   let chai
   let expect

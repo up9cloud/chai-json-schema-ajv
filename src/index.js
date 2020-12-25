@@ -1,4 +1,4 @@
-const Ajv = require('ajv').default ? require('ajv').default : require('ajv') // ? `v7` : `<= v6`
+const Ajv = require('ajv').default ? require('ajv').default : require('ajv')// ? `v7` : `<= v6`
 
 function _createPlugin (chai, utils, options) {
   let ajv
@@ -55,7 +55,7 @@ function _createPlugin (chai, utils, options) {
 
     let placeholder
     let detail
-    if ( 
+    if (
       verbose ||
       (ajv.opts && ajv.opts.verbose) || // v7
       (ajv._opts && ajv._opts.verbose) // <= v6

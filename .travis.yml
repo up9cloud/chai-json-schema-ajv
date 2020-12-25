@@ -6,12 +6,16 @@ node_js:
   - 10
 after_success:
   - npm run coverage
-deploy:
-  provider: npm
-  email: "$NPM_EMAIL"
-  api_key:
-    secure: POfFH4pSn78HOEKT5PdnBlfYPWmetbqV79BH3PIyMTDQUhTB9X/E04xAb4ntOuxPvqglUF2I1MhyMIGsqpvtXZZVOo/zFhQQNVBUuJhGXtuqwmCrBLRkwEUEO5nLc0DANTFDfe6Z1GOgGUL5lM86DqS0KWStGfQ8WZ+Fa50DVjRITMWxXP8Kv9Z5Qvo3S26euA9nYslMw+qpViPacpJLheRcAhQASxfWLvM+J803JV++Ol1nUBH2VqcFZZvvdKpeEBNOxFNSr08wTNt42hqWqnfah5sQ8yX9kRxKjyjm3qt799mU0TRONm89DT+dT9uWvI6uG/vvtlCelU8/0pN7EZZAvIeQJdT2OywU25psk9aByuIDfCf45ghe4+BqGsgulqixcC0kgGuPI6yW3lyZ5Z14xpqniKt4PJEmB3esOjcYqAYYrG8mKg0Ag8D6dgbPoQmU3bLSQ00k3lZ/hpoNoPyTXz3hu4GVlthm5vpGZA2CDrkzSH39SKjM3U5F6AtnAbCqBnqBWkTgyecbt63c8mbkgjlWjgZC6PTaMnLDE4dHRID0b5ulftnOHzI2uSCAecmlz9bK9FXBDD9w9MmuKhPgGrWrzTsFlfyaG+aVTabwrct7+ubxeLytAJL4RpBilRYbnLBcUtyfNO0Z849AwB4hmLo4DO+mUJHWvADTQUE=
-  on:
-    all_branch: true
-    tags: true
-    repo: up9cloud/chai-json-schema-ajv
+jobs:
+  include:
+    - stage: deploy
+      node_js: node
+      deploy:
+        provider: npm
+        email: "$NPM_EMAIL"
+        api_key:
+          secure: POfFH4pSn78HOEKT5PdnBlfYPWmetbqV79BH3PIyMTDQUhTB9X/E04xAb4ntOuxPvqglUF2I1MhyMIGsqpvtXZZVOo/zFhQQNVBUuJhGXtuqwmCrBLRkwEUEO5nLc0DANTFDfe6Z1GOgGUL5lM86DqS0KWStGfQ8WZ+Fa50DVjRITMWxXP8Kv9Z5Qvo3S26euA9nYslMw+qpViPacpJLheRcAhQASxfWLvM+J803JV++Ol1nUBH2VqcFZZvvdKpeEBNOxFNSr08wTNt42hqWqnfah5sQ8yX9kRxKjyjm3qt799mU0TRONm89DT+dT9uWvI6uG/vvtlCelU8/0pN7EZZAvIeQJdT2OywU25psk9aByuIDfCf45ghe4+BqGsgulqixcC0kgGuPI6yW3lyZ5Z14xpqniKt4PJEmB3esOjcYqAYYrG8mKg0Ag8D6dgbPoQmU3bLSQ00k3lZ/hpoNoPyTXz3hu4GVlthm5vpGZA2CDrkzSH39SKjM3U5F6AtnAbCqBnqBWkTgyecbt63c8mbkgjlWjgZC6PTaMnLDE4dHRID0b5ulftnOHzI2uSCAecmlz9bK9FXBDD9w9MmuKhPgGrWrzTsFlfyaG+aVTabwrct7+ubxeLytAJL4RpBilRYbnLBcUtyfNO0Z849AwB4hmLo4DO+mUJHWvADTQUE=
+        on:
+          all_branch: true
+          tags: true
+          repo: up9cloud/chai-json-schema-ajv

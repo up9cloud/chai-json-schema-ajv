@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "clear-module": "^2.1.0",
+    "clear-module": "^4.1.1",
     "coveralls": "^3.1.0",
     "eslint": "^7.5.0",
     "eslint-config-standard": "^14.1.1",

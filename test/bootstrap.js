@@ -1,8 +1,10 @@
-global.fs = require('fs')
-global.path = require('path')
+const fs = require('fs')
+const path = require('path')
 const chai = require('chai')
 const chaiJsonSchemaAjv = require('../index.js')
 chai.use(chaiJsonSchemaAjv)
+global.fs = fs
+global.path = path
 global.chai = chai
 global.chaiJsonSchemaAjv = chaiJsonSchemaAjv
 global.expect = chai.expect
@@ -21,40 +23,40 @@ switch (process.env.AJV_VERSION) {
   case 'v6': {
     global.Ajv = require('ajv')
     global.defaultAjv = global.Ajv
-    global.rootPath = `${__dirname}/unit/ajv-v6`
+    global.rootPath = path.join(__dirname, 'unit', 'ajv-v6')
     break
   }
   // v7: .refs['http://json-schema.org/schema']: http://json-schema.org/draft-07/schema
   case 'v7': {
     global.Ajv = require('ajv').default
     global.defaultAjv = global.Ajv
-    global.rootPath = `${__dirname}/unit/ajv-v7`
+    global.rootPath = path.join(__dirname, 'unit', 'ajv-v7')
     break
   }
   // v8: .refs['http://json-schema.org/schema']: http://json-schema.org/draft-07/schema
   case 'v8': {
     global.Ajv = require('ajv').default
     global.defaultAjv = global.Ajv
-    global.rootPath = `${__dirname}/unit/ajv-v8`
+    global.rootPath = path.join(__dirname, 'unit', 'ajv-v8')
     break
   }
   // v8-2019: .refs['http://json-schema.org/schema']: http://json-schema.org/draft-07/schema
   case 'v8-2019': {
     global.Ajv = require('ajv/dist/2019')
     global.defaultAjv = require('ajv').default
-    global.rootPath = `${__dirname}/unit/ajv-v8`
+    global.rootPath = path.join(__dirname, 'unit', 'ajv-v8')
     break
   }
   // v8-2020: .refs['http://json-schema.org/schema']:
   case 'v8-2020': {
     global.Ajv = require('ajv/dist/2020')
     global.defaultAjv = require('ajv').default
-    global.rootPath = `${__dirname}/unit/ajv-v8`
+    global.rootPath = path.join(__dirname, 'unit', 'ajv-v8')
     break
   }
   // latest
   default:
     global.Ajv = require('ajv').default
     global.defaultAjv = global.Ajv
-    global.rootPath = `${__dirname}/unit/ajv-v8`
+    global.rootPath = path.join(__dirname, 'unit', 'ajv-v8')
 }

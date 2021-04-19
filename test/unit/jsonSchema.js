@@ -8,7 +8,8 @@ describe(__filename, function () {
     })
   })
   describe('should fail: car is fruit', function () {
-    const message = fs.readFileSync(`${rootPath}/${require('path').basename(__filename)}-be.err`, 'utf8')
+    const filePath = path.join(rootPath, `${path.basename(__filename)}-be.err`)
+    const message = fs.readFileSync(filePath, 'utf8')
     it('expect(car).to.be.jsonSchema(fruitSchema)', function () {
       try {
         expect(car).to.be.jsonSchema(fruitSchema)
@@ -44,7 +45,8 @@ describe(__filename, function () {
     })
   })
   describe('should fail: apple is not fruit', function () {
-    const message = fs.readFileSync(`${rootPath}/${require('path').basename(__filename)}-notBe.err`, 'utf8')
+    const filePath = path.join(rootPath, `${path.basename(__filename)}-notBe.err`)
+    const message = fs.readFileSync(filePath, 'utf8')
     it('expect(apple).to.not.be.jsonSchema(fruitSchema)', function () {
       try {
         expect(apple).to.not.be.jsonSchema(fruitSchema)

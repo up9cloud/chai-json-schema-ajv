@@ -16,7 +16,8 @@ describe(__filename, function () {
         expect(car).to.be.jsonSchema(fruitSchema)
       } catch (e) {
         expect(e).to.be.instanceof(chai.AssertionError)
-        expect(e.message).to.be.equal(fs.readFileSync(`${rootPath}/${require('path').basename(__filename)}-be.jsonSchema.err`, 'utf8'))
+        const filePath = path.join(rootPath, `${path.basename(__filename)}-be.jsonSchema.err`)
+        expect(e.message).to.be.equal(fs.readFileSync(filePath, 'utf8'))
       }
     })
     it('expect(apple).to.not.be.jsonSchema(fruitSchema) should print full error message', function () {
@@ -24,7 +25,8 @@ describe(__filename, function () {
         expect(apple).to.not.be.jsonSchema(fruitSchema)
       } catch (e) {
         expect(e).to.be.instanceof(chai.AssertionError)
-        expect(e.message).to.be.equal(fs.readFileSync(`${rootPath}/${require('path').basename(__filename)}-not.be.jsonSchema.err`, 'utf8'))
+        const filePath = path.join(rootPath, `${path.basename(__filename)}-not.be.jsonSchema.err`)
+        expect(e.message).to.be.equal(fs.readFileSync(filePath, 'utf8'))
       }
     })
     it('expect(invalidSchema).to.be.validJsonSchema should print full error message', function () {
@@ -32,7 +34,8 @@ describe(__filename, function () {
         expect(invalidSchema).to.be.validJsonSchema
       } catch (e) {
         expect(e).to.be.instanceof(chai.AssertionError)
-        expect(e.message).to.be.equal(fs.readFileSync(`${rootPath}/${require('path').basename(__filename)}-be.validJsonSchema.err`, 'utf8'))
+        const filePath = path.join(rootPath, `${path.basename(__filename)}-be.validJsonSchema.err`)
+        expect(e.message).to.be.equal(fs.readFileSync(filePath, 'utf8'))
       }
     })
     it('expect(fruitSchema).to.not.be.validJsonSchema should print full error message', function () {
@@ -40,7 +43,8 @@ describe(__filename, function () {
         expect(fruitSchema).to.not.be.validJsonSchema
       } catch (e) {
         expect(e).to.be.instanceof(chai.AssertionError)
-        expect(e.message).to.be.equal(fs.readFileSync(`${rootPath}/${require('path').basename(__filename)}-not.be.validJsonSchema.err`, 'utf8'))
+        const filePath = path.join(rootPath, `${path.basename(__filename)}-not.be.validJsonSchema.err`)
+        expect(e.message).to.be.equal(fs.readFileSync(filePath, 'utf8'))
       }
     })
   })
@@ -61,7 +65,8 @@ describe(__filename, function () {
         expect(car).to.be.jsonSchema(fruitSchema)
       } catch (e) {
         expect(e).to.be.instanceof(chai.AssertionError)
-        expect(e.message).to.be.equal(fs.readFileSync(`${rootPath}/${require('path').basename(__filename)}-be.jsonSchema.err2`, 'utf8'))
+        const filePath = path.join(rootPath, `${path.basename(__filename)}-be.jsonSchema.err2`)
+        expect(e.message).to.be.equal(fs.readFileSync(filePath, 'utf8'))
       }
     })
   })
@@ -83,7 +88,8 @@ describe(__filename, function () {
         expect(car).to.be.jsonSchema(fruitSchema)
       } catch (e) {
         expect(e).to.be.instanceof(chai.AssertionError)
-        expect(e.message).to.be.equal(fs.readFileSync(`${rootPath}/${require('path').basename(__filename)}-be.jsonSchema.err`, 'utf8'))
+        const filePath = path.join(rootPath, `${path.basename(__filename)}-be.jsonSchema.err`)
+        expect(e.message).to.be.equal(fs.readFileSync(filePath, 'utf8'))
       }
     })
   })

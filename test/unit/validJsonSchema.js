@@ -8,7 +8,8 @@ describe(__filename, function () {
     })
   })
   describe('should fail: invalid schema is valid', function () {
-    const message = fs.readFileSync(`${rootPath}/${require('path').basename(__filename)}-be.err`, 'utf8')
+    const filePath = path.join(rootPath, `${path.basename(__filename)}-be.err`)
+    const message = fs.readFileSync(filePath, 'utf8')
     it('expect(invalidSchema).to.be.validJsonSchema', function () {
       try {
         expect(invalidSchema).to.be.validJsonSchema
@@ -44,7 +45,8 @@ describe(__filename, function () {
     })
   })
   describe('should fail: fruit schema is not valid', function () {
-    const message = fs.readFileSync(`${rootPath}/${require('path').basename(__filename)}-notBe.err`, 'utf8')
+    const filePath = path.join(rootPath, `${path.basename(__filename)}-notBe.err`)
+    const message = fs.readFileSync(filePath, 'utf8')
     it('expect(fruitSchema).to.not.be.validJsonSchema', function () {
       try {
         expect(fruitSchema).to.not.be.validJsonSchema

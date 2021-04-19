@@ -1,6 +1,7 @@
 module.exports = {
   globals: {
     fs: true,
+    path: true,
     chai: true,
     chaiJsonSchemaAjv: true,
     expect: true,

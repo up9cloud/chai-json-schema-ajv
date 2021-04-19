@@ -8,6 +8,10 @@ module.exports = {
     invalidSchema: true,
     fruitSchema: true,
     apple: true,
-    car: true
+    car: true,
+
+    Ajv: true,
+    defaultAjv: true,
+    rootPath: true
   }
 }

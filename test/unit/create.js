@@ -1,4 +1,3 @@
-const Ajv = require('ajv').default ? require('ajv').default : require('ajv')
 describe(__filename, function () {
   let chai
   let expect
@@ -14,10 +13,10 @@ describe(__filename, function () {
         foo: 'bar'
       }
       chai.use(chaiJsonSchemaAjv.create(options))
-      expect(chai.ajv).to.be.instanceof(Ajv)
-      if (chai.ajv.opts) { // v7
+      expect(chai.ajv).to.be.instanceof(defaultAjv)
+      if (chai.ajv.opts) { // >= v7
         expect(chai.ajv.opts.foo).to.be.equal(options.foo)
-      } else { // < v7
+      } else { // <= v6
         expect(chai.ajv._opts.foo).to.be.equal(options.foo)
       }
     })

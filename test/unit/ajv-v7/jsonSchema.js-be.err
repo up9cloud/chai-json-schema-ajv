@@ -1,0 +1,2 @@
+expected data to match json-schema
+data should have required property 'color'

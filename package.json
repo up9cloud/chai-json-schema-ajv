@@ -22,15 +22,21 @@
   },
   "scripts": {
     "lint": "eslint src test",
-    "test": "npm run lint && npm run test-v4 && npm run test-v5 && npm run test-v6 && npm run test-latest",
-    "test-v4": "npm i ajv@4 --no-save && nyc mocha test/unit",
-    "test-v5": "npm i ajv@5 --no-save && nyc mocha test/unit",
-    "test-v6": "npm i ajv@6 --no-save && nyc mocha test/unit",
-    "test-latest": "npm remove ajv && npm i ajv --no-save && nyc mocha test/unit",
+    "test": "npm run lint && npm run test-v4 && npm run test-v5 && npm run test-v6 && npm run test-v7 && npm run test-v8 && npm run test-latest",
+    "test-v4": "npm i ajv@4 --no-save && AJV_VERSION=v4 nyc mocha test/unit",
+    "test-v5": "npm i ajv@5 --no-save && AJV_VERSION=v5 nyc mocha test/unit",
+    "test-v6": "npm i ajv@6 --no-save && AJV_VERSION=v6 nyc mocha test/unit",
+    "test-v7": "npm i ajv@7 --no-save && AJV_VERSION=v7 nyc mocha test/unit",
+    "test-v8": "npm run test-v8-default && npm run test-v8-2019 && npm run test-v8-2020",
+    "test-v8-default": "npm i ajv@8 --no-save && AJV_VERSION=v8 nyc mocha test/unit",
+    "test-v8-2019": "npm i ajv@8 --no-save && AJV_VERSION=v8-2019 nyc mocha test/unit",
+    "test-v8-2020": "npm i ajv@8 --no-save && AJV_VERSION=v8-2020 nyc mocha test/unit",
+    "test-latest": "npm i ajv@latest --no-save && nyc mocha test/unit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "test-node6": "docker run --rm -v ${PWD}:/app -w /app node:6-alpine npm i eslint@6 --no-save && npm test",
     "test-node8": "docker run --rm -v ${PWD}:/app -w /app node:8-alpine npm i eslint@6 --no-save && npm test",
-    "test-node12": "docker run --rm -v ${PWD}:/app -w /app node:12-alpine npm test"
+    "test-node12": "docker run --rm -v ${PWD}:/app -w /app node:12-alpine npm test",
+    "test-node14": "docker run --rm -v ${PWD}:/app -w /app node:14-alpine npm test"
   },
   "repository": {
     "type": "git",

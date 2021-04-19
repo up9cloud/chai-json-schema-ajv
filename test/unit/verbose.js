@@ -1,5 +1,4 @@
 const clearModule = require('clear-module')
-const rootPath = require('ajv').default ? `${__dirname}/ajv-v7/${require('path').basename(__filename)}` : __filename
 describe(__filename, function () {
   describe('create({ verbose: true })', function () {
     let chai
@@ -17,7 +16,7 @@ describe(__filename, function () {
         expect(car).to.be.jsonSchema(fruitSchema)
       } catch (e) {
         expect(e).to.be.instanceof(chai.AssertionError)
-        expect(e.message).to.be.equal(fs.readFileSync(`${rootPath}-be.jsonSchema.err`, 'utf8'))
+        expect(e.message).to.be.equal(fs.readFileSync(`${rootPath}/${require('path').basename(__filename)}-be.jsonSchema.err`, 'utf8'))
       }
     })
     it('expect(apple).to.not.be.jsonSchema(fruitSchema) should print full error message', function () {
@@ -25,7 +24,7 @@ describe(__filename, function () {
         expect(apple).to.not.be.jsonSchema(fruitSchema)
       } catch (e) {
         expect(e).to.be.instanceof(chai.AssertionError)
-        expect(e.message).to.be.equal(fs.readFileSync(`${rootPath}-not.be.jsonSchema.err`, 'utf8'))
+        expect(e.message).to.be.equal(fs.readFileSync(`${rootPath}/${require('path').basename(__filename)}-not.be.jsonSchema.err`, 'utf8'))
       }
     })
     it('expect(invalidSchema).to.be.validJsonSchema should print full error message', function () {
@@ -33,7 +32,7 @@ describe(__filename, function () {
         expect(invalidSchema).to.be.validJsonSchema
       } catch (e) {
         expect(e).to.be.instanceof(chai.AssertionError)
-        expect(e.message).to.be.equal(fs.readFileSync(`${rootPath}-be.validJsonSchema.err`, 'utf8'))
+        expect(e.message).to.be.equal(fs.readFileSync(`${rootPath}/${require('path').basename(__filename)}-be.validJsonSchema.err`, 'utf8'))
       }
     })
     it('expect(fruitSchema).to.not.be.validJsonSchema should print full error message', function () {
@@ -41,7 +40,7 @@ describe(__filename, function () {
         expect(fruitSchema).to.not.be.validJsonSchema
       } catch (e) {
         expect(e).to.be.instanceof(chai.AssertionError)
-        expect(e.message).to.be.equal(fs.readFileSync(`${rootPath}-not.be.validJsonSchema.err`, 'utf8'))
+        expect(e.message).to.be.equal(fs.readFileSync(`${rootPath}/${require('path').basename(__filename)}-not.be.validJsonSchema.err`, 'utf8'))
       }
     })
   })
@@ -50,7 +49,6 @@ describe(__filename, function () {
     let expect
     before(function () {
       clearModule('chai')
-      const Ajv = require('ajv').default ? require('ajv').default : require('ajv')
       chai = require('chai')
       chai.use(chaiJsonSchemaAjv.create({
         ajv: new Ajv(),
@@ -63,7 +61,7 @@ describe(__filename, function () {
         expect(car).to.be.jsonSchema(fruitSchema)
       } catch (e) {
         expect(e).to.be.instanceof(chai.AssertionError)
-        expect(e.message).to.be.equal(fs.readFileSync(`${rootPath}-be.jsonSchema.err2`, 'utf8'))
+        expect(e.message).to.be.equal(fs.readFileSync(`${rootPath}/${require('path').basename(__filename)}-be.jsonSchema.err2`, 'utf8'))
       }
     })
   })
@@ -72,7 +70,6 @@ describe(__filename, function () {
     let expect
     before(function () {
       clearModule('chai')
-      const Ajv = require('ajv').default ? require('ajv').default : require('ajv')
       chai = require('chai')
       chai.use(chaiJsonSchemaAjv.create({
         ajv: new Ajv({
@@ -86,7 +83,7 @@ describe(__filename, function () {
         expect(car).to.be.jsonSchema(fruitSchema)
       } catch (e) {
         expect(e).to.be.instanceof(chai.AssertionError)
-        expect(e.message).to.be.equal(fs.readFileSync(`${rootPath}-be.jsonSchema.err`, 'utf8'))
+        expect(e.message).to.be.equal(fs.readFileSync(`${rootPath}/${require('path').basename(__filename)}-be.jsonSchema.err`, 'utf8'))
       }
     })
   })
